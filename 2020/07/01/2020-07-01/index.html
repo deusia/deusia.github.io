@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="前言起因是在复习计算机网络的时候，遇到了一个曼彻斯特编码的问题，这个是计算机网络物理层的时候会遇到的的问题。关于曼彻斯特编码的应用请看这段摘自Wiki百科的：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="编码: 隐匿在计算机软硬件背后的语言">
+<meta property="og:url" content="http://example.com/2020/07/01/2020-07-01/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前言起因是在复习计算机网络的时候，遇到了一个曼彻斯特编码的问题，这个是计算机网络物理层的时候会遇到的的问题。关于曼彻斯特编码的应用请看这段摘自Wiki百科的：">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://www.duesia303.tech/manchestercoding.png">
+<meta property="article:published_time" content="2020-07-01T14:13:29.000Z">
+<meta property="article:modified_time" content="2020-07-01T15:48:52.000Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="物理">
+<meta property="article:tag" content="数字电路">
+<meta property="article:tag" content="编程">
+<meta property="article:tag" content="汇编">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.duesia303.tech/manchestercoding.png">
+
+<link rel="canonical" href="http://example.com/2020/07/01/2020-07-01/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>编码: 隐匿在计算机软硬件背后的语言 | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/07/01/2020-07-01/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          编码: 隐匿在计算机软硬件背后的语言
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-07-01 22:13:29 / Modified: 23:48:52" itemprop="dateCreated datePublished" datetime="2020-07-01T22:13:29+08:00">2020-07-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9D%82%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">杂记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>起因是在复习计算机网络的时候，遇到了一个曼彻斯特编码的问题，这个是计算机网络物理层的时候会遇到的的问题。关于曼彻斯特编码的应用请看这段摘自Wiki百科的：</p>
+<a id="more"></a>
+
+
+
+<blockquote>
+<p>曼彻斯特编码被<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%89%A9%E7%90%86%E5%B1%82">物理层</a>用来<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%BC%96%E7%A0%81">编码</a>一个同步<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E4%BD%8D%E6%B5%81">位流</a>的时钟和数据。因此，曼彻斯特编码被用在<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E4%BB%A5%E5%A4%AA%E7%BD%91">以太网</a>媒介系统中。曼彻斯特编码提供一个简单的方式给编码简单的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E4%BA%8C%E8%BF%9B%E5%88%B6">二进制</a>序列而没有长的周期及转换级别，因而防止时钟同步的丢失，或来自低频率位移在贫乏补偿的模拟链接位错误。在这个技术下，实际上的二进制数据被传输通过这个电缆，不是作为一个<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%BA%8F%E5%88%97">序列</a>的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E9%80%BB%E8%BE%91">逻辑</a>1或0来发送的(<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E4%B8%8D%E6%AD%B8%E9%9B%B6">NRZ</a>）。与NRZ相反，这些位被转换为一个稍微不同的格式，它通过使用直接的二进制编码。[<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%9B%BC%E5%BD%BB%E6%96%AF%E7%89%B9%E7%BC%96%E7%A0%81#cite_note-:0-1">1]</a></p>
+<p>曼彻斯特编码还被用于<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%B1%80%E5%9F%9F%E7%BD%91">局域网</a>传输。[<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%9B%BC%E5%BD%BB%E6%96%AF%E7%89%B9%E7%BC%96%E7%A0%81#cite_note-:0-1">1]</a></p>
+</blockquote>
+<p>其实啊，主要是考试题目要出信号图的编码题，就像下面这样的</p>
+<p><img src="http://www.duesia303.tech/manchestercoding.png" alt="曼彻斯特编码"></p>
+<p>于是就有个想法想找本书系统的学一下编码什么什么的，然后就买了一本带“编码”两个字的这本书</p>
+<h1 id="意料之外的编码"><a href="#意料之外的编码" class="headerlink" title="意料之外的编码"></a>意料之外的编码</h1><p>从回到家后开始看看了八天，大体上是看完了。的确是编码，但是没有曼彻斯特编码有关的内容。作者是Charles Petzold，这人可以百度或者谷歌的到。他写的这本书的流程是一个演进式的，前一个章节式下一个或者后续章节的基础。说是讲编码，确实是讲了编码，二进制的代数系统，一开始用的<strong>摩尔斯电码</strong>、<strong>布莱叶盲文</strong>。不过出乎预料的是他用短短的篇幅构建了一台<strong>计算机</strong>,是<strong>计算机</strong>而不是<strong>计算器</strong>。仔细看看标题，“隐匿在计算机软硬件背后的语言”，情理之中，意料之外。</p>
+<h1 id="这是一本奇书"><a href="#这是一本奇书" class="headerlink" title="这是一本奇书"></a>这是一本奇书</h1><p>没错在这里我就要开始吹这本书了！😁</p>
+<p>这是一本奇书，我在这里再说一次！</p>
+<p>第一个“奇”在于，这本书涉及的领域。这本书要说出生的话，是具有纯种的理工科血统的。其中涉及了数学、物理、化学、计算机结构体系、数字电路、关系代数、汇编语言。</p>
+<p>第二个“奇”在于，将上述的各个学个给串联了以来，成为构成计算机不可缺少的，理论技术上的一环。这里特别想引用乔帮主的一句名言：</p>
+<blockquote>
+<p>“你不能在展望未来的时候把点点滴滴串连起来;你只能在回顾的时候把它们联系起来。所以你必须相信，这些点会在你的未来以某种方式连接起来。你必须相信某些东西——你的勇气、命运、生命、因缘。因为相信这些点滴会在人生的路上连接起来，会给你跟随自己内心的信心，即使它会引导你离开陈腐的道路，这将使一切变得不同。”   ——————Steven Paul Jobs</p>
+</blockquote>
+<h1 id="一个接着一个的惊喜"><a href="#一个接着一个的惊喜" class="headerlink" title="一个接着一个的惊喜"></a>一个接着一个的惊喜</h1><p>从电灯炮的简单电路开始，到电磁体、电报技术的发展、<strong>继电器（Relays）</strong>的出现！由继电器组成的逻辑门电路，构成了更为有作用的功能单元：加法器、计数器、选择器、触发器、译码器。数据可以被存储在特定的功能单元之中，能被其他功能单元所使用，用来计算和传递！</p>
+<p>相应的作者坐观历史的演进，从继电器（Relays）到真空管(Vacuum Tube)，再到现在集成电路（IC）的基础——晶体管（Transistor）。尽管材料的进步，导致变化的发生，数字电路中的逻辑门永远都能为这些东西里注入灵魂！</p>
+<p>存储的出现，编码指令能被存储，这个简易的计算装置能够进行自动化操作。Jump指令的出现，真正的让这个计算装置从计算器变成了计算器！指令和数据在RAM中存储，被顺序的执行，Jump让其能够在地址中让执行流跳转，变得不在只能执行一个“计算过程”。<strong>编码</strong>真的做到了让一堆通了电的器件化腐朽为神奇！</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>看这本书是一场有浓厚回味的旅程。作者的文笔将复杂变得能让常人理解，我想这也是作者被成为大师的原因之一。大学期间，学过了之前提到的几门课程，总觉得不得要领，不知道学了能干什么，正是这本书展示了所学的知识所用的地方。让我心中的“点”，逐渐的能够连成“线”，期待能够形成怎样的图形。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%89%A9%E7%90%86/" rel="tag"># 物理</a>
+              <a href="/tags/%E6%95%B0%E5%AD%97%E7%94%B5%E8%B7%AF/" rel="tag"># 数字电路</a>
+              <a href="/tags/%E7%BC%96%E7%A8%8B/" rel="tag"># 编程</a>
+              <a href="/tags/%E6%B1%87%E7%BC%96/" rel="tag"># 汇编</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/07/01/%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/" rel="prev" title="编码: 隐匿在计算机软硬件背后的语言">
+      <i class="fa fa-chevron-left"></i> 编码: 隐匿在计算机软硬件背后的语言
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/07/02/%E5%88%97%E8%A1%A8/" rel="next" title="列表和元组">
+      列表和元组 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%84%8F%E6%96%99%E4%B9%8B%E5%A4%96%E7%9A%84%E7%BC%96%E7%A0%81"><span class="nav-number">2.</span> <span class="nav-text">意料之外的编码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%99%E6%98%AF%E4%B8%80%E6%9C%AC%E5%A5%87%E4%B9%A6"><span class="nav-number">3.</span> <span class="nav-text">这是一本奇书</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E4%B8%AA%E6%8E%A5%E7%9D%80%E4%B8%80%E4%B8%AA%E7%9A%84%E6%83%8A%E5%96%9C"><span class="nav-number">4.</span> <span class="nav-text">一个接着一个的惊喜</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

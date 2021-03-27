@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="创建型模式单例模式确保某一个类只有一个实例，而且自行实例化饼向整个系统提供这个实例，这个类称为单例类，它提供全局访问的方法。单例模式是一种对象创建型模式 单例模式的要点 某个类只能有一个实例 它必须自行创建这个实例 它必须自行向整个系统提供这个实例">
+<meta property="og:type" content="article">
+<meta property="og:title" content="编码: 隐匿在计算机软硬件背后的语言">
+<meta property="og:url" content="http://example.com/2020/07/01/%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="创建型模式单例模式确保某一个类只有一个实例，而且自行实例化饼向整个系统提供这个实例，这个类称为单例类，它提供全局访问的方法。单例模式是一种对象创建型模式 单例模式的要点 某个类只能有一个实例 它必须自行创建这个实例 它必须自行向整个系统提供这个实例">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-07-01T14:13:29.000Z">
+<meta property="article:modified_time" content="2021-03-27T06:36:58.569Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2020/07/01/%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>编码: 隐匿在计算机软硬件背后的语言 | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/07/01/%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          编码: 隐匿在计算机软硬件背后的语言
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-07-01 22:13:29" itemprop="dateCreated datePublished" datetime="2020-07-01T22:13:29+08:00">2020-07-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-03-27 14:36:58" itemprop="dateModified" datetime="2021-03-27T14:36:58+08:00">2021-03-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9D%82%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">杂记</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="创建型模式"><a href="#创建型模式" class="headerlink" title="创建型模式"></a>创建型模式</h1><h2 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h2><p>确保某一个类只有一个实例，而且自行实例化饼向整个系统提供这个实例，这个类称为单例类，它提供全局访问的方法。单例模式是一种对象创建型模式</p>
+<h3 id="单例模式的要点"><a href="#单例模式的要点" class="headerlink" title="单例模式的要点"></a>单例模式的要点</h3><ol>
+<li>某个类只能有一个实例</li>
+<li>它必须自行创建这个实例</li>
+<li>它必须自行向整个系统提供这个实例</li>
+</ol>
+<a id="more"></a>
+
+<p>以Windows的任务管理器为例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">classDiagram</span><br><span class="line">	class TaskManager&#123;</span><br><span class="line">		-tm : TaskManager </span><br><span class="line">		+TaskManager()</span><br><span class="line">		+getInstance() TaskManager</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TaskManager</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> TaskManager tm = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 初始化窗口</span></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="title">TaskManager</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> TaskManager <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (tm == <span class="keyword">null</span>) &#123;</span><br><span class="line">      tm = <span class="keyword">new</span> TaskManager();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> tm;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 显示进程</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">displayProcesses</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 显示服务</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">displayServices</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>该版本的单例模式是不完全的，它无法==在多线程的情况下正常运行==，往往会在初始化对象的时候，其他线程调用<code>getInstance()</code>方法，因实例还在创建中，所以会==导致多个实例对象存在而引发异常问题==</p>
+<h3 id="饿汉式与懒汉式单例——解决多线程下的问题"><a href="#饿汉式与懒汉式单例——解决多线程下的问题" class="headerlink" title="饿汉式与懒汉式单例——解决多线程下的问题"></a>饿汉式与懒汉式单例——解决多线程下的问题</h3><h4 id="饿汉式单例"><a href="#饿汉式单例" class="headerlink" title="饿汉式单例"></a>饿汉式单例</h4><p>饿汉式单例类是实现起来最为简单的单例类，其结构图如下图</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">classDiagram</span><br><span class="line">	class EagerSingleton&#123;</span><br><span class="line">		-instance : EagerSingleton</span><br><span class="line">		-EagerSingleton()</span><br><span class="line">		+getInstance() EagerSingleton</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	EagerSingleton --o EagerSingleton : instance</span><br></pre></td></tr></table></figure>
+<p>该方式基于class loader机制避免了多线程的同步问题，也就是在加载类的时候，就初始化了<code>instance</code>变量，创建了单例，防止了在多线程情况下运行时创建单例导致的问题。</p>
+<p>优点：没有加锁🔒，执行效率会比较高</p>
+<p>缺点：类加载时就初始化，占用了内存，从而会导致一些不必要的浪费</p>
+<p>饿汉式单例的大题实现方式如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EagerSingleton</span></span>&#123;</span><br><span class="line">  <span class="comment">//将单例声明为静态变量，在类加载时就初始化</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> EagerSingleton instance = <span class="keyword">new</span> EagerSingleton();</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="title">EagerSingleton</span><span class="params">()</span></span>&#123;&#125;;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> EagerSingleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> instance;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="懒汉式单例"><a href="#懒汉式单例" class="headerlink" title="懒汉式单例"></a>懒汉式单例</h4><p>懒汉式单例在类加载时不会自行实例化，，在调用<code>getInstance()</code>方法后才会实例化，这个和最先提到的==任务管理器==的代码实现是一样的。<u>也就是说任务管理器的实现方式是一种懒汉式的，但是却又做不到多线程情况下的安全。</u></p>
+<p>懒汉式之所以被称为懒汉式，是有采用了<strong>延迟加载</strong>（Lazy load）技术，即需要的时候再加载实例。为了避免多个线程同时调用<code>getInstance()</code>方法，可以使用关键字<code>synchronized</code>。</p>
+<p>安全的懒汉式单例的实现方式如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LazySingleton</span></span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> LazySingleton instance;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="title">LazySingleton</span><span class="params">()</span></span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//当getInstance()方法调用时，才会实例化，synchronized保证了只有一个线程在能执行该方法</span></span><br><span class="line">  <span class="function"><span class="keyword">synchronized</span> <span class="keyword">public</span> <span class="keyword">static</span> LazySingleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(instance == <span class="keyword">null</span>)&#123;</span><br><span class="line">      instance = <span class="keyword">new</span> LazySingleton();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> instance;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在虽然实现的懒汉式单例的多线程安全，但是每次调用<code>getInstance()</code>方法需要进行线程锁定判定，这在多线程高并发的访问环境中，将会导致系统性能的大幅下降。因此我们要多上述⬆️的方法进行如下的修改。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LazySingleton</span></span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> LazySingleton instance;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="title">LazySingleton</span><span class="params">()</span></span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//当getInstance()方法调用时，才会实例化，synchronized保证了只有一个线程在能执行该方法</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> LazySingleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">  	<span class="keyword">if</span>(instance == <span class="keyword">null</span>)&#123;</span><br><span class="line">    	<span class="keyword">synchronized</span> (LazySingleton.class)&#123;</span><br><span class="line">      	instance = <span class="keyword">new</span> LazySingleton();        </span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> instance;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>问题貌似得到了解决，事实却并非如此。如果使用以上代码来创建单例对象，还是会存在==单例对象不唯一==的情况。比如，线程A和B调用<code>getInstance()</code>方法，此时instance对象均为<code>null</code>,所以都能通过<code>if(instance == null)</code>的判定，这样子便出现了问题，需要进一步修改，再增加一次判定来防止==单例对象不唯一==。这种方法称为<strong>双重检查锁定</strong>（Double-Check Locking），使用双重检查锁定实现的懒汉式单例类完成代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LazySingleton</span></span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">static</span> <span class="keyword">final</span> LazySingleton instance;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="title">LazySingleton</span><span class="params">()</span></span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//当getInstance()方法调用时，才会实例化，synchronized保证了只有一个线程在能执行该方法</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> LazySingleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//第一重判断</span></span><br><span class="line">  	<span class="keyword">if</span>(instance == <span class="keyword">null</span>)&#123;</span><br><span class="line">      <span class="comment">//锁定代码块</span></span><br><span class="line">    	<span class="keyword">synchronized</span> (LazySingleton.class)&#123;</span><br><span class="line">      	<span class="comment">//第二重判断</span></span><br><span class="line">        <span class="keyword">if</span>(instance == <span class="keyword">null</span>)&#123;</span><br><span class="line">		    	instance = <span class="keyword">new</span> LazySingleton();                  </span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> instance;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>需要注意的是，如果使用双重检查锁定来实现懒汉式单例，需要在静态成员变量instance之前添加修饰符<code>volatile</code>,被<code>volatile</code>修饰后的变量才可以确保多个线程都能够正确处理，且该代码只能在==JDK1.5以上==才能实现。由于<code>volatile</code>会屏蔽一些Java虚拟机的代码优化，可能导致系统运行效率下降，因此使用双重检查锁定来实现单例模式，也不一定是一种完美的实现方法</p>
+<hr>
+<h2 id="简单工厂模式"><a href="#简单工厂模式" class="headerlink" title="简单工厂模式"></a>简单工厂模式</h2><p>工厂模式是最常用的一类创建型设计模式。通常说的工厂模式就是指工厂方法模式，也是使用频率最高的工厂模式，不过在了解工厂方法模式之前，先来了解一下==简单工厂方法模式==。该模式不属于GOF的23种设计模式中的一种，但也在软件开发中运用的也较为频繁，通常是学习其他工厂方法模式的入门。</p>
+<blockquote>
+<p>简单工厂模式(Simple Factory Pattern)：定义了一个工厂类，它可以根据参数的不同返回不同类的实例，被创建的实例通常都具有共同的父类。因为在简单工厂模式中用于创建实例的方法是静态(static)方法，因此简单工厂模式又被称<strong>为静态工厂方法</strong>(Static Factory Method)模式，它属于类创建型模式。</p>
+</blockquote>
+<p>简单工厂模式的结构如图所示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">classDiagram</span><br><span class="line">	class Product&#123;</span><br><span class="line">		&lt;&lt;abstract&gt;&gt;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	class ConcreteProductA&#123;</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	class ConcreteProductB&#123;</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	class Factory&#123;</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	Product &lt;|-- ConcreteProductA</span><br><span class="line">	Product &lt;|-- ConcreteProductB</span><br><span class="line">	</span><br><span class="line">	ConcreteProductA &lt;|.. Factory :create</span><br><span class="line">	ConcreteProductB &lt;|.. Factory :create</span><br></pre></td></tr></table></figure>
+<p>Product（抽象产品角色）</p>
+<p>它是工厂类所创建的所有对象的父类，封装了各种产品对象的公有方法。抽象产品的引入提高了系统的灵活性，使得在工厂类中只需定义一个通用的共产方法，因为所有创建的具体产品对象都是其子类的对象。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Product</span> </span>&#123;</span><br><span class="line">    <span class="comment">//所有产品类的公共业务方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodSame</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//公共方法的实现</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    声明抽象业务方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">methodDiff</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>Concrete Product（具体产品角色）</p>
+<p>它是简单工厂模式的创建目标，所有被创建的对象都充当这个角色的某个具体类的实例。每个具体产品角色都继承抽象产品角色，需要实现在抽象产品中声明的抽象方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcretePruductA</span> <span class="keyword">extends</span> <span class="title">Product</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ConcretePruductA</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;ConcreteProductA的构造器&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodDiff</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;ConcreteProductA中的methodDiff方法&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Factory（工厂角色）</p>
+<p>即工厂类，它是简单工厂模式的核心，负责实现创建所有产品实例的内部逻辑。工厂类可以被外界直接调用，创建所需要的产品角色。在工厂类中提供了静态的工厂方法<code>getProduct()</code>，它的返回类型为抽象产品类型Product。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Factory</span> </span>&#123;</span><br><span class="line">  <span class="comment">//    静态工厂方法</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Product <span class="title">getProduct</span><span class="params">(String args)</span> </span>&#123;</span><br><span class="line">    Product product = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (args.equalsIgnoreCase(<span class="string">&quot;A&quot;</span>)) &#123;</span><br><span class="line">      <span class="comment">//      初始化设置product</span></span><br><span class="line">      product = <span class="keyword">new</span> ConcretePruductA();</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (args.equalsIgnoreCase(<span class="string">&quot;B&quot;</span>)) &#123;</span><br><span class="line">      <span class="comment">//      初始化设置product</span></span><br><span class="line">      product = <span class="keyword">new</span> ConcretePruductB();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> product;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Client（客户端角色）</p>
+<p>在该角色中，实例化工厂对象，通过工厂对象的静态方法<code>getProduct(&quot;A&quot;)</code>就可以使用工厂类生产具体产品角色A。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Product product;</span><br><span class="line">    product=Factory.getProduct(<span class="string">&quot;A&quot;</span>);</span><br><span class="line"></span><br><span class="line">      product.methodDiff();</span><br><span class="line">      product.methodSame();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="简单工厂模式总结"><a href="#简单工厂模式总结" class="headerlink" title="简单工厂模式总结"></a>简单工厂模式总结</h3><p>简单工厂模式提供了专门的工厂类用户创建对象，将对象的创建和对象的使用分离开，它作为一种简单的工厂模式在软件开发中得到了较为广泛的应用。</p>
+<h3 id="主要优点"><a href="#主要优点" class="headerlink" title="主要优点"></a>主要优点</h3><ol>
+<li>工厂类包含必要的判断逻辑，可以决定在什么时候创建哪一个产品类的实例</li>
+<li>实现对象创建和使用分离——符合单一职责原则</li>
+<li>客户端无需知道所创建的具体产品的类名，而是通过对应的参数创建</li>
+<li>通过引入配置文件，可以在不修改代码的情况下，更换或增加新的具体产品类</li>
+</ol>
+<h3 id="主要缺点"><a href="#主要缺点" class="headerlink" title="主要缺点"></a>主要缺点</h3><ol>
+<li>工厂类集中了所有产品的创建逻辑，职责过重，一旦不能正常工作，整个系统都要受到影响</li>
+<li>使用简单工厂类势必会增加系统中类的个数，增加了系统的复杂度和理解难度</li>
+<li>系统拓展困难，添加新产品就必须修改工厂逻辑</li>
+<li>简单工厂模式由于使用了静态工厂方法，造成工厂类无法形成基于继承的等级结构</li>
+</ol>
+<h3 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h3><ol>
+<li>工厂类负责创建的对象较少。</li>
+<li>客户端只关心传入工厂类的参数，对于如何创建对象并不关心</li>
+</ol>
+<hr>
+<h2 id="工厂方法模式"><a href="#工厂方法模式" class="headerlink" title="工厂方法模式"></a>工厂方法模式</h2><blockquote>
+<p>工厂方法模式（Factory Method Pattern）：定义一个用于创建对象的接口，让子类决定将哪一个类实例化。工厂方法模式让一个类的实例化延迟到其子类。工厂方法模式有简称为工厂模式（Factory Pattern），又可称作虚拟构造器模式（Virtual Constructor Pattern）或多态工厂模式（polymorphic Factory Pattern）。工厂方法模式是一个类创建型模式。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">classDiagram</span><br><span class="line">	class Factory&#123;</span><br><span class="line">		&lt;&lt;interface&gt;&gt;</span><br><span class="line">		factoryMethod() Product</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	class ConcreteFactory&#123;</span><br><span class="line">  	factoryMethod() Product</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	class Product&#123;</span><br><span class="line">		&lt;&lt;interface&gt;&gt;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	class ConcreteProduct&#123;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	Factory &lt;|.. ConcreteFactory</span><br><span class="line">	Product &lt;|.. ConcreteProduct</span><br></pre></td></tr></table></figure>
+<h3 id="工厂方法模式总结"><a href="#工厂方法模式总结" class="headerlink" title="工厂方法模式总结"></a>工厂方法模式总结</h3><p>工厂方法模式是简单工厂模式的延伸，它继承了简单工厂模式的优点，同时还弥补了简单工厂模式的不足。工厂模式是使用最频繁的设计模式之一，是很多框架和API类库的核心模式。</p>
+<h3 id="主要优点-1"><a href="#主要优点-1" class="headerlink" title="主要优点"></a>主要优点</h3><ol>
+<li>用户只需关心所需产品对应的工厂，无需关心创建细节，甚至无需知道具体产品的类名</li>
+<li>基于工厂角色和产品角色的多态性设计是工厂方法模式的关键</li>
+<li>使用工厂方法模式的另一个优点是在系统中加入新产品是，无需修改抽象工厂和抽象产品提供的接口，无需修改客户端，也无需修改其他的具体工厂和具体产品，只要添加一个具体工厂和具体产品即可</li>
+</ol>
+<h3 id="主要缺点-1"><a href="#主要缺点-1" class="headerlink" title="主要缺点"></a>主要缺点</h3><ol>
+<li>在添加新产品时，需要编写新的具体产品类，而且还要提供与之对应的具体工厂类，系统中类的个数成对增加，增加了一定复杂度，有更多的类需要编译运行，会给系统带来一些额外的开销</li>
+<li>引入抽象层，增加了系统的抽象性和复杂性，实现要用到DOM、反射等技术，增加了系统实现的难度</li>
+</ol>
+<h3 id="适用场景-1"><a href="#适用场景-1" class="headerlink" title="适用场景"></a>适用场景</h3><ol>
+<li>客户端只关心传入工厂类的参数，对于如何创建对象并不关心</li>
+</ol>
+<hr>
+<h2 id="抽象工厂模式"><a href="#抽象工厂模式" class="headerlink" title="抽象工厂模式"></a>抽象工厂模式</h2><blockquote>
+<p>抽象工厂模式（Abstract Factory Pattern）：提供了一个创建一系列相关或相互依赖对象的接口，而无须指定他们具体的类。抽象工厂模式又称为Kit模式，它是一个对象创建型模式。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">classDiagram</span><br><span class="line">	class AbstractFactory&#123;</span><br><span class="line">		&lt;&lt;interface&gt;&gt;</span><br><span class="line">		+createProductA() AbstractProductA</span><br><span class="line">		+createProductB() AbstractProductB</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	class AbstractProductA&#123;</span><br><span class="line">		&lt;&lt;interface&gt;&gt;</span><br><span class="line">		+display() void</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	class AbstractProductB&#123;</span><br><span class="line">		&lt;&lt;interface&gt;&gt;</span><br><span class="line">		+display() void</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	class ConcreteFactory1&#123;</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line">	class ConcreteFactory2&#123;</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	class ConcreteProductA1&#123;</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	class ConcreteProductA2&#123;</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	class ConcreteProductB1&#123;</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	class ConcreteProductB2&#123;</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	AbstractFactory ..|&gt; ConcreteFactory1</span><br><span class="line">	AbstractFactory ..|&gt; ConcreteFactory2</span><br><span class="line">	</span><br><span class="line">	AbstractProductA ..|&gt; ConcreteProductA1</span><br><span class="line">	AbstractProductA ..|&gt; ConcreteProductA2</span><br><span class="line">	</span><br><span class="line">	AbstractProductB ..|&gt; ConcreteProductB1</span><br><span class="line">	AbstractProductB ..|&gt; ConcreteProductB2</span><br><span class="line">	</span><br><span class="line">	ConcreteFactory1 --* ConcreteProductA1</span><br><span class="line">	ConcreteFactory1 --* ConcreteProductB1</span><br><span class="line">	</span><br><span class="line">	ConcreteFactory2 --* ConcreteProductA2</span><br><span class="line">	ConcreteFactory2 --* ConcreteProductB2</span><br></pre></td></tr></table></figure>
+
+<h3 id="抽象工厂方法模式总结"><a href="#抽象工厂方法模式总结" class="headerlink" title="抽象工厂方法模式总结"></a>抽象工厂方法模式总结</h3><p>工厂方法模式是简单工厂模式的延伸，它继承了简单工厂模式的优点，同时还弥补了简单工厂模式的不足。工厂模式是使用最频繁的设计模式之一，是很多框架和API类库的核心模式。</p>
+<h3 id="主要优点-2"><a href="#主要优点-2" class="headerlink" title="主要优点"></a>主要优点</h3><ol>
+<li>用户只需关心所需产品对应的工厂，无需关心创建细节，甚至无需知道具体产品的类名</li>
+<li>基于工厂角色和产品角色的多态性设计是工厂方法模式的关键</li>
+<li>使用工厂方法模式的另一个优点是在系统中加入新产品是，无需修改抽象工厂和抽象产品提供的接口，无需修改客户端，也无需修改其他的具体工厂和具体产品，只要添加一个具体工厂和具体产品即可</li>
+</ol>
+<h3 id="主要缺点-2"><a href="#主要缺点-2" class="headerlink" title="主要缺点"></a>主要缺点</h3><ol>
+<li>在添加新产品时，需要编写新的具体产品类，而且还要提供与之对应的具体工厂类，系统中类的个数成对增加，增加了一定复杂度，有更多的类需要编译运行，会给系统带来一些额外的开销</li>
+<li>引入抽象层，增加了系统的抽象性和复杂性，实现要用到DOM、反射等技术，增加了系统实现的难度</li>
+</ol>
+<h3 id="适用场景-2"><a href="#适用场景-2" class="headerlink" title="适用场景"></a>适用场景</h3><ol>
+<li>客户端只关心传入工厂类的参数，对于如何创建对象并不关心</li>
+</ol>
+<h2 id="原型模式"><a href="#原型模式" class="headerlink" title="原型模式"></a>原型模式</h2><h2 id="建造者模式"><a href="#建造者模式" class="headerlink" title="建造者模式"></a>建造者模式</h2>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/06/11/2020-06-11/" rel="prev" title="存储器管理概述">
+      <i class="fa fa-chevron-left"></i> 存储器管理概述
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/07/01/2020-07-01/" rel="next" title="编码: 隐匿在计算机软硬件背后的语言">
+      编码: 隐匿在计算机软硬件背后的语言 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">创建型模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.1.</span> <span class="nav-text">单例模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E7%9A%84%E8%A6%81%E7%82%B9"><span class="nav-number">1.1.1.</span> <span class="nav-text">单例模式的要点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A5%BF%E6%B1%89%E5%BC%8F%E4%B8%8E%E6%87%92%E6%B1%89%E5%BC%8F%E5%8D%95%E4%BE%8B%E2%80%94%E2%80%94%E8%A7%A3%E5%86%B3%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8B%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">1.1.2.</span> <span class="nav-text">饿汉式与懒汉式单例——解决多线程下的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A5%BF%E6%B1%89%E5%BC%8F%E5%8D%95%E4%BE%8B"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">饿汉式单例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%87%92%E6%B1%89%E5%BC%8F%E5%8D%95%E4%BE%8B"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">懒汉式单例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.2.</span> <span class="nav-text">简单工厂模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F%E6%80%BB%E7%BB%93"><span class="nav-number">1.2.1.</span> <span class="nav-text">简单工厂模式总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E8%A6%81%E4%BC%98%E7%82%B9"><span class="nav-number">1.2.2.</span> <span class="nav-text">主要优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E8%A6%81%E7%BC%BA%E7%82%B9"><span class="nav-number">1.2.3.</span> <span class="nav-text">主要缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">1.2.4.</span> <span class="nav-text">适用场景</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.3.</span> <span class="nav-text">工厂方法模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F%E6%80%BB%E7%BB%93"><span class="nav-number">1.3.1.</span> <span class="nav-text">工厂方法模式总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E8%A6%81%E4%BC%98%E7%82%B9-1"><span class="nav-number">1.3.2.</span> <span class="nav-text">主要优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E8%A6%81%E7%BC%BA%E7%82%B9-1"><span class="nav-number">1.3.3.</span> <span class="nav-text">主要缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF-1"><span class="nav-number">1.3.4.</span> <span class="nav-text">适用场景</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.4.</span> <span class="nav-text">抽象工厂模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F%E6%80%BB%E7%BB%93"><span class="nav-number">1.4.1.</span> <span class="nav-text">抽象工厂方法模式总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E8%A6%81%E4%BC%98%E7%82%B9-2"><span class="nav-number">1.4.2.</span> <span class="nav-text">主要优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E8%A6%81%E7%BC%BA%E7%82%B9-2"><span class="nav-number">1.4.3.</span> <span class="nav-text">主要缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF-2"><span class="nav-number">1.4.4.</span> <span class="nav-text">适用场景</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.5.</span> <span class="nav-text">原型模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%BA%E9%80%A0%E8%80%85%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.6.</span> <span class="nav-text">建造者模式</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

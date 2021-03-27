@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="离散数学什么是离散数学离散数学（英语：Discrete mathematics）是数学的几个分支的总称，研究基于离散空间而不是连续的数学结构。与连续变化的实数不同，离散数学的研究对象——例如整数、图和数学逻辑中的命题[1]——不是连续变化的，而是拥有不等、分立的值。因此离散数学不包含微积分和分析等“连续数学”的内容。离散对象经常可以用整数来枚举。更一般地，离散数学被视为处理可数集合（与整数子集基数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="离散数学">
+<meta property="og:url" content="http://example.com/2020/03/04/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="离散数学什么是离散数学离散数学（英语：Discrete mathematics）是数学的几个分支的总称，研究基于离散空间而不是连续的数学结构。与连续变化的实数不同，离散数学的研究对象——例如整数、图和数学逻辑中的命题[1]——不是连续变化的，而是拥有不等、分立的值。因此离散数学不包含微积分和分析等“连续数学”的内容。离散对象经常可以用整数来枚举。更一般地，离散数学被视为处理可数集合（与整数子集基数">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://www.duesia303.tech/02.jpg">
+<meta property="article:published_time" content="2020-03-04T06:31:45.000Z">
+<meta property="article:modified_time" content="2020-06-07T16:21:48.000Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="命题逻辑">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.duesia303.tech/02.jpg">
+
+<link rel="canonical" href="http://example.com/2020/03/04/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>离散数学 | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/03/04/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          离散数学
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-03-04 14:31:45" itemprop="dateCreated datePublished" datetime="2020-03-04T14:31:45+08:00">2020-03-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-06-08 00:21:48" itemprop="dateModified" datetime="2020-06-08T00:21:48+08:00">2020-06-08</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">离散数学</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="离散数学"><a href="#离散数学" class="headerlink" title="离散数学"></a>离散数学</h1><h2 id="什么是离散数学"><a href="#什么是离散数学" class="headerlink" title="什么是离散数学"></a>什么是离散数学</h2><p>离散数学（英语：Discrete mathematics）是数学的几个分支的总称，研究基于离散空间而不是连续的数学结构。与连续变化的实数不同，离散数学的研究对象——例如整数、图和数学逻辑中的命题[1]——不是连续变化的，而是拥有不等、分立的值。因此离散数学不包含微积分和分析等“连续数学”的内容。离散对象经常可以用整数来枚举。更一般地，离散数学被视为处理可数集合（与整数子集基数相同的集合，包括有理数集但不包括实数集）的数学分支。但是，“离散数学”不存在准确且普遍认可的定义。实际上，离散数学经常被定义为不包含连续变化量及相关概念的数学，甚少被定义为包含什么内容的数学。</p>
+<a id="more"></a>
+
+<h2 id="命题逻辑在计算机科学中的运用"><a href="#命题逻辑在计算机科学中的运用" class="headerlink" title="命题逻辑在计算机科学中的运用"></a>命题逻辑在计算机科学中的运用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">graph TD</span><br><span class="line"></span><br><span class="line">A(命题逻辑)--&gt;B(数字电路)</span><br><span class="line">A(命题逻辑)--&gt;C(计算机)</span><br><span class="line">A(命题逻辑)--&gt;D(程序设计)</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>使用对象</th>
+<th>使用的主要内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>数字电路</td>
+<td>电路设计与简化</td>
+</tr>
+<tr>
+<td>计算机</td>
+<td>逻辑运算</td>
+</tr>
+<tr>
+<td>程序设计</td>
+<td>程序优化</td>
+</tr>
+</tbody></table>
+<h2 id="命题"><a href="#命题" class="headerlink" title="命题"></a>命题</h2><h3 id="命题：-具有真假意义的陈述句"><a href="#命题：-具有真假意义的陈述句" class="headerlink" title="命题：**具有真假意义的陈述句**"></a>命题：**<code>具有真假意义的陈述句</code>**</h3><h2 id="逻辑联结词"><a href="#逻辑联结词" class="headerlink" title="逻辑联结词"></a>逻辑联结词</h2><h3 id="否定联结词"><a href="#否定联结词" class="headerlink" title="否定联结词"></a>否定联结词</h3><table>
+<thead>
+<tr>
+<th align="center">P</th>
+<th align="center">~P</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">0</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">0</td>
+</tr>
+</tbody></table>
+<h3 id="合取联结词"><a href="#合取联结词" class="headerlink" title="合取联结词"></a>合取联结词</h3><table>
+<thead>
+<tr>
+<th align="center">P</th>
+<th align="center">Q</th>
+<th align="center">P$\land$Q</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+</tbody></table>
+<h3 id="析取联结词"><a href="#析取联结词" class="headerlink" title="析取联结词"></a>析取联结词</h3><table>
+<thead>
+<tr>
+<th align="center">P</th>
+<th align="center">Q</th>
+<th align="center">P$\lor$Q</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+</tbody></table>
+<h3 id="蕴涵联结词"><a href="#蕴涵联结词" class="headerlink" title="蕴涵联结词"></a>蕴涵联结词</h3><table>
+<thead>
+<tr>
+<th align="center">P</th>
+<th align="center">Q</th>
+<th align="center">P$\rightarrow$Q</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+</tbody></table>
+<h3 id="等价联结词"><a href="#等价联结词" class="headerlink" title="等价联结词"></a>等价联结词</h3><table>
+<thead>
+<tr>
+<th align="center">P</th>
+<th align="center">Q</th>
+<th align="center">P$\arrow$Q</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+</tbody></table>
+<p><img src="http://www.duesia303.tech/02.jpg"></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%91%BD%E9%A2%98%E9%80%BB%E8%BE%91/" rel="tag"># 命题逻辑</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/02/23/2020-03-23/" rel="prev" title="Java程序的类型">
+      <i class="fa fa-chevron-left"></i> Java程序的类型
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/03/04/hello-world/" rel="next" title="Hello World">
+      Hello World <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6"><span class="nav-number">1.</span> <span class="nav-text">离散数学</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6"><span class="nav-number">1.1.</span> <span class="nav-text">什么是离散数学</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%91%BD%E9%A2%98%E9%80%BB%E8%BE%91%E5%9C%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E4%B8%AD%E7%9A%84%E8%BF%90%E7%94%A8"><span class="nav-number">1.2.</span> <span class="nav-text">命题逻辑在计算机科学中的运用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%91%BD%E9%A2%98"><span class="nav-number">1.3.</span> <span class="nav-text">命题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E9%A2%98%EF%BC%9A-%E5%85%B7%E6%9C%89%E7%9C%9F%E5%81%87%E6%84%8F%E4%B9%89%E7%9A%84%E9%99%88%E8%BF%B0%E5%8F%A5"><span class="nav-number">1.3.1.</span> <span class="nav-text">命题：**具有真假意义的陈述句**</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E8%81%94%E7%BB%93%E8%AF%8D"><span class="nav-number">1.4.</span> <span class="nav-text">逻辑联结词</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%A6%E5%AE%9A%E8%81%94%E7%BB%93%E8%AF%8D"><span class="nav-number">1.4.1.</span> <span class="nav-text">否定联结词</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%88%E5%8F%96%E8%81%94%E7%BB%93%E8%AF%8D"><span class="nav-number">1.4.2.</span> <span class="nav-text">合取联结词</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%90%E5%8F%96%E8%81%94%E7%BB%93%E8%AF%8D"><span class="nav-number">1.4.3.</span> <span class="nav-text">析取联结词</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%95%B4%E6%B6%B5%E8%81%94%E7%BB%93%E8%AF%8D"><span class="nav-number">1.4.4.</span> <span class="nav-text">蕴涵联结词</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AD%89%E4%BB%B7%E8%81%94%E7%BB%93%E8%AF%8D"><span class="nav-number">1.4.5.</span> <span class="nav-text">等价联结词</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
