@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="OjdXM70grAATKN1QJGwLBo72Di5gzkmmYBZRyJsvr4w">
+  <meta name="msvalidate.01" content="FD8B5E7193A807F7DE67B661B336D05A">
+  <meta name="baidu-site-verification" content="code-i7r9vnuihw">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"duesia303.tech","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="An algorithm is a step-by-step procedure for solving a problem.“Pattern of thought” which governs scientific apprehension during a certain period of time.General approaches to the construction of effi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="An algorithm is a step-by-step procedure for solving a problem">
+<meta property="og:url" content="http://duesia303.tech/2021/12/10/An-algorithm-is-a-step-by-step-procedure-for-solving-a-problem/index.html">
+<meta property="og:site_name" content="35坪工作室">
+<meta property="og:description" content="An algorithm is a step-by-step procedure for solving a problem.“Pattern of thought” which governs scientific apprehension during a certain period of time.General approaches to the construction of effi">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-12-10T09:39:08.000Z">
+<meta property="article:modified_time" content="2021-12-10T09:41:59.697Z">
+<meta property="article:author" content="室长">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://duesia303.tech/2021/12/10/An-algorithm-is-a-step-by-step-procedure-for-solving-a-problem/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh'
+  };
+</script>
+
+  <title>An algorithm is a step-by-step procedure for solving a problem | 35坪工作室</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">35坪工作室</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-主页">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>主页</a>
+
+  </li>
+        <li class="menu-item menu-item-关于我">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于我</a>
+
+  </li>
+        <li class="menu-item menu-item-标签">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-分类">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-归档">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-fw fa-calendar"></i>Schedule</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-fw fa-sitemap"></i>Sitemap</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh">
+    <link itemprop="mainEntityOfPage" href="http://duesia303.tech/2021/12/10/An-algorithm-is-a-step-by-step-procedure-for-solving-a-problem/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="室长">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="35坪工作室">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          An algorithm is a step-by-step procedure for solving a problem
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-12-10 17:39:08 / Modified: 17:41:59" itemprop="dateCreated datePublished" datetime="2021-12-10T17:39:08+08:00">2021-12-10</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="An-algorithm-is-a-step-by-step-procedure-for-solving-a-problem"><a href="#An-algorithm-is-a-step-by-step-procedure-for-solving-a-problem" class="headerlink" title="An algorithm is a step-by-step procedure for solving a problem."></a>An algorithm is a step-by-step procedure for solving a problem.</h3><h3 id="“Pattern-of-thought”-which-governs-scientific-apprehension-during-a-certain-period-of-time"><a href="#“Pattern-of-thought”-which-governs-scientific-apprehension-during-a-certain-period-of-time" class="headerlink" title="“Pattern of thought” which governs scientific apprehension during a certain period of time."></a>“Pattern of thought” which governs scientific apprehension during a certain period of time.</h3><h3 id="General-approaches-to-the-construction-of-efficient-solutions-to-problems"><a href="#General-approaches-to-the-construction-of-efficient-solutions-to-problems" class="headerlink" title="General approaches to the construction of efficient solutions to problems"></a>General approaches to the construction of efficient solutions to problems</h3><h2 id="暴力破解法（Brute-Force-Paradigm）"><a href="#暴力破解法（Brute-Force-Paradigm）" class="headerlink" title="暴力破解法（Brute Force Paradigm）"></a>暴力破解法（Brute Force Paradigm）</h2><p>暴力破解法简单直接，根据问题声明的定义，找到所有可变化的因子（Divisor），穷举所有可能解决问题的方法，逐个尝试。<br>所以，根据暴力破解法的定义，理论上讲任何问题都可以使用暴力破解法来解决，只是在实际应用中算法对时间和空间的需求则无法满足。<br>将暴力破解法应用于数据查找，由于查找比较次数与给定目标的规模直接相关，所以也称为线性查找（Linear Search）。<br>线性查找有很多典型应用：</p>
+<ul>
+<li> <a target="_blank" rel="noopener" href="http://www.cnblogs.com/gaochundong/p/comparison_sorting_algorithms.html#selection_sort">选择排序（Selection Sort）</a> </li>
+<li> <a target="_blank" rel="noopener" href="http://www.cnblogs.com/gaochundong/p/comparison_sorting_algorithms.html#bubble_sort">冒泡排序（Bubble Sort）</a> </li>
+<li> <a target="_blank" rel="noopener" href="http://www.cnblogs.com/gaochundong/p/binary_search.html">顺序查找（Sequential Search）</a> </li>
+<li> <a target="_blank" rel="noopener" href="http://www.cnblogs.com/gaochundong/p/string_matching.html#naive_string_matching_algorithm">暴力字符串匹配（Naive String Match）</a> </li>
+</ul>
+<a id="more"></a>
+<h2 id="分治法（Divide-and-Conquer-Paradigm）"><a href="#分治法（Divide-and-Conquer-Paradigm）" class="headerlink" title="分治法（Divide and Conquer Paradigm）"></a>分治法（Divide and Conquer Paradigm）</h2><p>分治法（Divide-and-Conquer），即 “分而治之”，是将原问题划分成 n 个规模较小而结构与原问题相似的子问题，递归地解决这些问题，然后再合并其结果，以得到原问题的解。<br>当我们遇到一个大问题时，总是习惯把问题的规模变小，这样便于分析讨论。这些规模变小后的问题和原来的问题是同质的，除了规模变小，其它的都是一样的，本质上它还是同一个问题，规模变小后的问题其实是原问题的子问题。<br>分治模式在每一层上都有三个步骤：<br>1 分解（Divide）：将原问题分解成一系列与原问题同质的子问题；<br>2 解决（Conquer）：递归地解决各个子问题。若子问题足够小，则直接求解；<br>3 合并（Combine）：将子问题的结果合并成原问题的解。<br>分治法所能解决的问题一般具有以下几个特征：<br>1 可以将问题分解为若干个规模较小的相同问题；<br>2 问题的规模缩小到一定程度后就可以很容易地解决；<br>3 问题分解出的子问题的解可以合并为该问题的解；<br>4 问题所分解出的各个子问题是相互独立的，即子问题之间不再包含公共的孙问题。<br>符合 1,2,3 条特征是使用分治法的关键，而特征 4 将涉及到分治法的效率问题。而如果不符合 3,4 特征的问题可以尝试考虑使用动态规划或贪心算法来解决。<br>分治法的典型应用：</p>
+<ul>
+<li> <a target="_blank" rel="noopener" href="http://www.cnblogs.com/gaochundong/p/comparison_sorting_algorithms.html#merge_sort">合并排序（Merge Sort）</a> </li>
+<li> <a target="_blank" rel="noopener" href="http://www.cnblogs.com/gaochundong/p/comparison_sorting_algorithms.html#quick_sort">快速排序（Quick Sort）</a> </li>
+<li> <a target="_blank" rel="noopener" href="http://www.cnblogs.com/gaochundong/p/binary_search.html">二分查找（Binary Search）</a> <h2 id="动态规划法（Dynamic-Programming-Paradigm）"><a href="#动态规划法（Dynamic-Programming-Paradigm）" class="headerlink" title="动态规划法（Dynamic Programming Paradigm）"></a><strong>动态规划法（Dynamic Programming Paradigm）</strong></h2>动态规划的过程可以描述为多阶段最优化解决问题的过程，每一次的决策依赖于当前的状态，随即又引起状态的转移，以此类推在变化的状态中产生出决策序列。<br>动态规划算法通常基于一个递推公式及一个或多个初始状态，当前子问题的解将由上一次子问题的解推出。使用动态规划来解题通常只需要多项式时间复杂度，所以会比回溯法、暴力法等要快许多。<br>动态规划方法中的关键词包括：阶段（Stage）、状态（State）、决策（Decision）、递推关系（Recurrent Relation）。<br>动态规划首先将待求解的问题分解为若干个子问题（阶段），按顺序求解子问题。前一子问题的解为后一子问题的求解提供了有用的信息。在求解任一子问题时，列出各种可能的局部解，通过决策保留那些有可能达到最优的局部解，丢弃其他局部解。以此类推解决各子问题，最后一个子问题的解就是初始问题的解。<br>动态规划与分治法最大的差别是：适合于用动态规划法求解的问题，经分解后得到的子问题往往不是互相独立的（即下一个子问题的求解是建立在上一个子问题的解的基础上，进行进一步的求解）。<br>动态规划所能解决的问题一般具有以下几个特征：<br>1 最优化原理（Mathematical Optimization）：如果问题的最优解所包含的子问题的解也是最优的，就称该问题具有最优子结构（Optimal Substructure），即满足最优化原理。<br>2 无后效性：即某阶段状态一旦确定，就不受这个状态以后决策的影响。也就是说，某状态以后的过程不会影响以前的状态，只与当前状态有关。<br>3 有重叠子问题（Overlapping Subproblems）：即子问题之间是不独立的，一个子问题在下一阶段决策中可能被多次使用到。<br>特征 3 并不是动态规划适用的必要条件，但是如果没有这条性质，动态规划算法同其他算法相比就不具备优势。<br>动态规划的基本步骤：<br>1 划分阶段：按照问题的时间或空间特征，把问题分为若干个阶段。注意划分后的阶段一定要是有序的或者是可排序的，否则问题就无法求解。<br>2 确定状态和状态变量：将问题发展到各个阶段时所处于的各种客观情况用不同的状态表示出来。状态的选择要满足无后效性。<br>3 确定决策并写出状态转移方程：因为决策和状态转移有着天然的联系，状态转移就是根据上一阶段的状态和决策来导出本阶段的状态。所以如果确定了决策，状态转移方程也就可写出。但事实上常常是反过来做，根据相邻两个阶段的状态之间的关系来确定决策方法和状态转移方程。<br>4 寻找边界条件：给出的状态转移方程是一个递推式，需要一个递推的终止条件或边界条件。<h2 id="贪心算法（Greedy-Paradigm）"><a href="#贪心算法（Greedy-Paradigm）" class="headerlink" title="贪心算法（Greedy Paradigm）"></a>贪心算法（Greedy Paradigm）</h2>所谓贪心算法是指，在对问题求解时，总是做出在当前看来最好的选择。也就是说，不从整体最优上加以考虑，它所做出的仅是在某种意义上的局部最优解。<br>贪心算法没有固定的算法框架，算法设计的关键是贪心策略的选择。贪心策略适用的前提是：局部最优策略能导致产生全局最优解。所以实际上，贪心算法适用的情况很少。<br>贪心算法不是对所有问题都能得到整体最优解，选择的贪心策略必须具备无后效性，即某个状态以后的过程不会影响以前的状态，只与当前状态有关。所以对所采用的贪心策略一定要仔细分析其是否满足无后效性。<br>贪心算法的基本思路：<br>1 建立数学模型来描述问题。<br>2 把求解的问题分成若干个子问题。<br>3 对每一子问题求解，得到子问题的局部最优解。<br>4 把子问题的解局部最优解合成原来问题的一个解。<h2 id="回溯法（Backtracking-Paradigm）"><a href="#回溯法（Backtracking-Paradigm）" class="headerlink" title="回溯法（Backtracking Paradigm）"></a>回溯法（Backtracking Paradigm）</h2>回溯法描述了一种选优搜索过程，按选优条件向前搜索，以达到目标。但当探索到某一步时，发现原先的选择并不优或达不到目标，就退回一步重新选择，这种走不通就退回再走的方法称为回溯法，而满足回溯条件的某个状态的点称为 “回溯点”。<br>回溯法可以理解为隐式的深度优先搜索算法。其在包含问题的所有解的解空间树中，按照深度优先搜索的策略，从根节点出发深度探索解空间树。当探索到某一节点时，要先判断该节点是否包含问题的解，如果包含，就从该节点出发继续探索下去，如果该节点不包含问题的解，则逐层向其祖先节点回溯。<br>许多复杂的，规模较大的问题都可以使用回溯法，有 “通用解题方法” 的美称。<br>回溯法的一般步骤：<br>1 针对给定问题，确定问题的解空间，问题的解空间应至少包含问题的一个（最优）解；<br>2 确定节点的扩展搜索规则；<br>3 以深度优先方式搜索解空间，并在搜索过程中用剪枝函数避免无效搜索；<h2 id="分支限界法（Branch-and-Bound-Paradigm）"><a href="#分支限界法（Branch-and-Bound-Paradigm）" class="headerlink" title="分支限界法（Branch and Bound Paradigm）"></a>分支限界法（Branch and Bound Paradigm）</h2>类似于回溯法，分支限界法也是一种在问题的解空间树上搜索问题解的算法。但在一般情况下，分支限界法与回溯法的求解目标不同。回溯法的求解目标是找出树中满足约束条件的所有解，而分支限界法的求解目标则是找出满足约束条件的一个解，或是在满足约束条件的解中找出使某一目标函数值达到极大或极小的解，即在某种意义下的最优解。<br>所谓 “分支” 就是采用广度优先搜索算法，依次搜索节点的所有分支，抛弃不满足约束条件的节点，然后从余下的节点中选择一个节点作为下一个搜索节点继续搜索。<br>由于求解目标不同，导致分支限界法与回溯法在解空间树上的搜索方式也不相同。回溯法以深度优先的方式搜索解空间树，而分支限界法则以广度优先或以最小耗费优先的方式搜索解空间树。<br>分支限界法的搜索策略是：在扩展节点处，先生成其所有的儿子节点（分支），然后再从当前的活节点表中选择下一个扩展节点。为了有效地选择下一扩展节点，以加速搜索的进程，在每一活节点处，计算一个函数值（限界），并根据这些已计算出的函数值，从当前活节点表中选择一个最有利的节点作为扩展节点，使搜索朝着解空间树上有最优解的分支推进，以便尽快地找出一个最优解。</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/12/10/FFmpeg%E6%98%AF%E4%BB%80%E4%B9%88/" rel="prev" title="FFmpeg是什么">
+      <i class="fa fa-chevron-left"></i> FFmpeg是什么
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#An-algorithm-is-a-step-by-step-procedure-for-solving-a-problem"><span class="nav-number">1.</span> <span class="nav-text">An algorithm is a step-by-step procedure for solving a problem.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%80%9CPattern-of-thought%E2%80%9D-which-governs-scientific-apprehension-during-a-certain-period-of-time"><span class="nav-number">2.</span> <span class="nav-text">“Pattern of thought” which governs scientific apprehension during a certain period of time.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#General-approaches-to-the-construction-of-efficient-solutions-to-problems"><span class="nav-number">3.</span> <span class="nav-text">General approaches to the construction of efficient solutions to problems</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%E6%B3%95%EF%BC%88Brute-Force-Paradigm%EF%BC%89"><span class="nav-number"></span> <span class="nav-text">暴力破解法（Brute Force Paradigm）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E6%B2%BB%E6%B3%95%EF%BC%88Divide-and-Conquer-Paradigm%EF%BC%89"><span class="nav-number"></span> <span class="nav-text">分治法（Divide and Conquer Paradigm）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%B3%95%EF%BC%88Dynamic-Programming-Paradigm%EF%BC%89"><span class="nav-number"></span> <span class="nav-text">动态规划法（Dynamic Programming Paradigm）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%EF%BC%88Greedy-Paradigm%EF%BC%89"><span class="nav-number"></span> <span class="nav-text">贪心算法（Greedy Paradigm）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9E%E6%BA%AF%E6%B3%95%EF%BC%88Backtracking-Paradigm%EF%BC%89"><span class="nav-number"></span> <span class="nav-text">回溯法（Backtracking Paradigm）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E6%94%AF%E9%99%90%E7%95%8C%E6%B3%95%EF%BC%88Branch-and-Bound-Paradigm%EF%BC%89"><span class="nav-number"></span> <span class="nav-text">分支限界法（Branch and Bound Paradigm）</span></a></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">室长</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">室长</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
